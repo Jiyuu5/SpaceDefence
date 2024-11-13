@@ -1,11 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10.0f;
-    public float horizontalInput;
+    [SerializeField] float movementSpeed = 10.0f;
+    [SerializeField] InputAction moveLeft;
+    [SerializeField] InputAction moveRight;
+    [SerializeField] InputAction fireLaser;
     public float fireRate = 1.0f;
     public GameObject projectile;
     private float movementBorder = 12f;
@@ -18,14 +22,27 @@ public class PlayerController : MonoBehaviour
     {
         fireRateCounter = 0f;
         gameController = FindFirstObjectByType<GameController>();
+
+    }
+
+    private void OnEnable() {
+        moveLeft.Enable();
+        moveRight.Enable();
+        fireLaser.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Get the horizontal input and move the player
-        horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        if(moveLeft.IsPressed()){
+            transform.Translate(Vector3.left * Time.deltaTime * movementSpeed );
+        }
+        if(moveRight.IsPressed()){
+            transform.Translate(Vector3.right * Time.deltaTime * movementSpeed );
+        }
+
+        
 
         // Prevent movement out of scene
         if (transform.position.x < -movementBorder)
@@ -38,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Fire a projectile and reset fire rate interval
-        if (Input.GetButton("Fire1") && fireRateCounter <= 0)
+        if (fireLaser.IsPressed() && fireRateCounter <= 0)
         {
             Instantiate(projectile, transform.position, transform.rotation);
             fireRateCounter = fireRate;
