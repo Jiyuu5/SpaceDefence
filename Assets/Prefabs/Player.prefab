@@ -121,8 +121,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77b12dc9b6f05f49a4421edb278ef61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  horizontalInput: 0
+  movementSpeed: 5
+  moveLeft:
+    m_Name: Move Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d8d0b244-e177-419e-a6a4-6b373ef297a4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1c9a1d68-6bf0-4a5f-ae97-99c26cad76bc
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Left
+      m_Flags: 0
+    m_Flags: 0
+  moveRight:
+    m_Name: Move Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e258f1de-388a-42d0-954e-17596b140ff9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d51247e8-12bf-4e0a-93f1-4f0064f64ace
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Right
+      m_Flags: 0
+    m_Flags: 0
+  fireLaser:
+    m_Name: Fire Laser
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: fe541890-6b3f-45ed-baee-2248e3fe8360
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a33b1168-7303-4631-b8ee-3c18c639ab39
+      m_Path: <Keyboard>/leftCtrl
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Fire Laser
+      m_Flags: 0
+    m_Flags: 0
   fireRate: 0.8
   projectile: {fileID: 3034333753118868718, guid: 6a0b52a74db2e2f43b7ae116f8eff778, type: 3}
   gameController: {fileID: 0}
